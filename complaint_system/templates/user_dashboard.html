@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5>Submit Complaint</h5>
+
+        <form id="complaintForm">
+    <input class="form-control mb-2" name="category" placeholder="Category" required>
+    <textarea class="form-control mb-2" name="description" placeholder="Description" required></textarea>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div id="msg"></div>
+
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <thead class="table-primary">
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in complaints %}
+        <tr>
+            <td>{{ c[0] }}</td>
+            <td>{{ c[1] }}</td>
+            <td>{{ c[2] }}</td>
+            <td>{{ c[3] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

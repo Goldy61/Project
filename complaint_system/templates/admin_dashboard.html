@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Admin Dashboard</h3>
+
+<canvas id="chart"></canvas>
+
+<table class="table table-bordered mt-4">
+<tr>
+    <th>ID</th>
+    <th>Category</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for c in complaints %}
+<tr>
+    <td>{{ c.id }}</td>
+    <td>{{ c.category }}</td>
+    <td>{{ c.status }}</td>
+    <td>
+        <form method="post" action="/update_status">
+            <input type="hidden" name="id" value="{{ c.id }}">
+            <select name="status">
+                <option>Pending</option>
+                <option>Resolved</option>
+            </select>
+            <button class="btn btn-sm btn-success">Update</button>
+        </form>
+    </td>
+</tr>
+
